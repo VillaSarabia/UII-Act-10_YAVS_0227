@@ -1,0 +1,39 @@
+{% extends "productos/base.html" %}
+
+{% block body %}
+    <h3 class="text-center m-4">Actualizar Producto Pokémon</h3>
+    
+    {% if success %}
+        <div class="alert alert-success" role="alert">
+            ¡El producto se **actualizó correctamente**!
+            <a href="{% url 'index' %}" class="alert-link">Volver al Inventario.</a>
+        </div>
+    {% else %}
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="card bg-light mb-3 shadow-lg border-warning">
+                    <div class="card-header bg-warning text-dark">
+                        <i class="fa-solid fa-pen-to-square fa-lg"></i> Editar Datos del Producto
+                    </div>
+                    <div class="card-body">
+                        <!-- La acción del formulario se deja vacía (action="") para que se envíe a la misma URL de edición, 
+                             lo cual es la práctica estándar en las vistas de edición de Django. -->
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                                <button type="submit" class="btn btn-warning text-dark me-md-2">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i> Actualizar Producto
+                                </button>
+                                <a href="{% url 'index' %}" class="btn btn-secondary">
+                                    <i class="fa-solid fa-xmark"></i> Cancelar
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

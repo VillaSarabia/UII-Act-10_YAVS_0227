@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sistema de Gestión de Productos Pokémon</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+        <!-- Asegúrate de que esta ruta a bootstrap sea correcta en tu proyecto -->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <style>
+            /* Estilos temáticos simples para Pokémon */
+            .bg-primary {
+                /* Azul temático de Pokémon */
+                background-color: #3B5CA8 !important; 
+            }
+            .navbar-brand {
+                font-weight: bold;
+            }
+            .min-vh-100 {
+                min-height: 100vh;
+            }
+        </style>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'index' %}">
+                    <!-- Ícono de Pokebola o similar -->
+                    <i class="fa-solid fa-store fa-lg"></i> Gestión de Productos Pokémon
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">
+                                <i class="fa-solid fa-list-check fa-lg"></i> Inventario
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'add' %}">
+                                <i class="fa-solid fa-plus-circle fa-lg"></i> Añadir Producto
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Contenido dinámico de las páginas -->
+        <div class="container-fluid flex-grow-1 py-4">
+            {% block body %}
+            {% endblock %}
+        </div>
+        
+        <footer class="mt-auto py-3 bg-light border-top">
+            <div class="container-fluid">
+                <div class="text-center text-muted small">
+                    <i class="fa-solid fa-copyright"></i> Copyright &copy; <script>document.write(new Date().getFullYear())</script> POKEMON Productos | YAHEL VILLA 5I.
+                </div>
+            </div>
+        </footer>
+        
+        <!-- Nota: He actualizado el link de Font Awesome a la versión más reciente (6.5.2) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
